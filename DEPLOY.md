@@ -39,7 +39,7 @@ git add .
 git commit -m "Initial portfolio"
 
 # Push to GitHub
-git remote add origin https://github.com/YOUR_USERNAME/danishamin-portfolio.git
+git remote add origin https://github.com/geoxpyder/danishamin-portfolio.git
 git branch -M main
 git push -u origin main
 ```

@@ -10,17 +10,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Deploy via SSH to EC2
+      - name: Deploy to EC2
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.EC2_HOST }}
-          username: ${{ secrets.EC2_USER }}
+          username: ubuntu
           key: ${{ secrets.EC2_KEY }}
           script: |
-            cd danishamin-portfolio || git clone https://github.com/geoxpyder/danishamin-portfolio.git && cd danishamin-portfolio
+            if [ ! -d "danishamin-portfolio" ]; then
+              git clone https://github.com/geoxpyder/danishamin-portfolio.git
+            fi
+
+            cd danishamin-portfolio
             git pull origin main
 
             docker build -t portfolio .

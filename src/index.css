@@ -1,0 +1,84 @@
+:root {
+  --cream: #F5F0E8;
+  --paper: #EDE8DC;
+  --rust: #C1440E;
+  --rust-dark: #8B2E06;
+  --rust-light: #E8613A;
+  --ink: #1A1208;
+  --ink-mid: #3D2B1A;
+  --muted: #8A7A68;
+  --border: #D4C8B4;
+  --border-dark: #B8A898;
+  --green: #1A7A4A;
+  --blue: #1A4A8A;
+  --mono: 'IBM Plex Mono', monospace;
+  --serif: 'DM Serif Display', serif;
+  --sans: 'Instrument Sans', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--sans);
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* Custom cursor */
+.cursor-dot {
+  position: fixed;
+  width: 8px; height: 8px;
+  background: var(--rust);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width .15s, height .15s;
+}
+.cursor-ring {
+  position: fixed;
+  width: 30px; height: 30px;
+  border: 1.5px solid var(--rust);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  opacity: 0.5;
+  transition: opacity .2s;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--paper); }
+::-webkit-scrollbar-thumb { background: var(--border-dark); }
+
+/* Section label utility */
+.sec-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--rust);
+  margin-bottom: .75rem;
+}
+
+/* Divider */
+.divider {
+  width: 100%;
+  height: 1px;
+  background: var(--border);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes spinSlow { to { transform: rotate(360deg); } }
+@keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:.35;} }
+@keyframes dash { to { stroke-dashoffset: 0; } }

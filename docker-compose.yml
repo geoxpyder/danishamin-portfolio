@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  # Production build (what will run in K8s)
+  portfolio:
+    build:
+      context: .
+      target: production
+    ports:
+      - "3000:80"
+    restart: unless-stopped
+
+  # Dev mode with hot reload (local development)
+  portfolio-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./src:/app/src
+      - ./public:/app/public
+    profiles:
+      - dev
